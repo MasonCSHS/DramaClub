@@ -3,7 +3,7 @@
     <div id="nav">
       <span v-for="(route, i) in routes" :key="route.path">
         <span v-if="route.header === true">
-          <router-link :to="route.path">{{ route.name }}</router-link>
+          <router-link :to="route.path" style="padding: 0.5em">{{ route.name }}</router-link>
           <span v-if="i !== routes.length - 1">|</span>
         </span>
       </span>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import routes from "./router/index.js"
+import {routes} from "./router/index.js"
 
 export default {
   name: 'App',
@@ -23,7 +23,7 @@ export default {
     }
   },
   created() {
-    console.log('App created')
+    setTimeout(()=>console.log(this.routes), 10000)
   }
 }
 </script>
