@@ -1,12 +1,32 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> a
+      <span v-for="(route, i) in routes" :key="route.path">
+        <span v-if="route.header === true">
+          <router-link :to="route.path">{{ route.name }}</router-link>
+          <span v-if="i !== routes.length - 1">|</span>
+        </span>
+      </span>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+import routes from "./router/index.js"
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      routes
+    }
+  },
+  created() {
+    console.log('App created')
+  }
+}
+</script>
 
 <style>
 #app {
