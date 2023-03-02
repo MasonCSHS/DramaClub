@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <span v-for="(route, i) in routes" :key="route.path">
-        <span v-if="route.header === true">
+        <span v-if="route.meta.header === true">
           <router-link :to="route.path" style="padding: 0.5em">{{ route.name }}</router-link>
           <span v-if="i !== routes.length - 1">|</span>
         </span>
@@ -22,9 +22,6 @@ export default {
       routes
     }
   },
-  created() {
-    setTimeout(()=>console.log(this.routes), 10000)
-  }
 }
 </script>
 
